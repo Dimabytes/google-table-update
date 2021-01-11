@@ -4,7 +4,10 @@ import moment from 'moment';
 const doc = new GoogleSpreadsheet(process.env.SHEET_ID!);
 
 const init = async () => {
-  await doc.useServiceAccountAuth(JSON.parse(process.env.GOOGLE_SERVICE_JSON!));
+  await doc.useServiceAccountAuth({
+    client_email: process.env.GOOGLE_CLIENT_EMAIL!,
+    private_key: process.env.GOOGLE_PRIVATE_KEY!,
+  });
 };
 
 const main = async () => {
